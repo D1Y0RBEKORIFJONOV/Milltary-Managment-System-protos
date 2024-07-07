@@ -33,8 +33,8 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SoldiersServiceClient interface {
 	CreateSoldiers(ctx context.Context, in *CreateSoldiersReq, opts ...grpc.CallOption) (*Status, error)
-	RegisterUser(ctx context.Context, in *RegisterAndLoginReq, opts ...grpc.CallOption) (*Soldiers, error)
-	Login(ctx context.Context, in *RegisterAndLoginReq, opts ...grpc.CallOption) (*LogerResponse, error)
+	RegisterUser(ctx context.Context, in *RegisterReq, opts ...grpc.CallOption) (*Soldiers, error)
+	Login(ctx context.Context, in *LoginReq, opts ...grpc.CallOption) (*LogerResponse, error)
 	GetSoldier(ctx context.Context, in *GetSoldierReq, opts ...grpc.CallOption) (*Soldiers, error)
 	GetAllSoldiers(ctx context.Context, in *GetAllSoldierReq, opts ...grpc.CallOption) (*GetSoldierRequestResponse, error)
 	UpdateSoldier(ctx context.Context, in *UpdateSoldierReq, opts ...grpc.CallOption) (*Soldiers, error)
@@ -59,7 +59,7 @@ func (c *soldiersServiceClient) CreateSoldiers(ctx context.Context, in *CreateSo
 	return out, nil
 }
 
-func (c *soldiersServiceClient) RegisterUser(ctx context.Context, in *RegisterAndLoginReq, opts ...grpc.CallOption) (*Soldiers, error) {
+func (c *soldiersServiceClient) RegisterUser(ctx context.Context, in *RegisterReq, opts ...grpc.CallOption) (*Soldiers, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Soldiers)
 	err := c.cc.Invoke(ctx, SoldiersService_RegisterUser_FullMethodName, in, out, cOpts...)
@@ -69,7 +69,7 @@ func (c *soldiersServiceClient) RegisterUser(ctx context.Context, in *RegisterAn
 	return out, nil
 }
 
-func (c *soldiersServiceClient) Login(ctx context.Context, in *RegisterAndLoginReq, opts ...grpc.CallOption) (*LogerResponse, error) {
+func (c *soldiersServiceClient) Login(ctx context.Context, in *LoginReq, opts ...grpc.CallOption) (*LogerResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(LogerResponse)
 	err := c.cc.Invoke(ctx, SoldiersService_Login_FullMethodName, in, out, cOpts...)
@@ -124,8 +124,8 @@ func (c *soldiersServiceClient) DeleteSoldier(ctx context.Context, in *DeleteSol
 // for forward compatibility
 type SoldiersServiceServer interface {
 	CreateSoldiers(context.Context, *CreateSoldiersReq) (*Status, error)
-	RegisterUser(context.Context, *RegisterAndLoginReq) (*Soldiers, error)
-	Login(context.Context, *RegisterAndLoginReq) (*LogerResponse, error)
+	RegisterUser(context.Context, *RegisterReq) (*Soldiers, error)
+	Login(context.Context, *LoginReq) (*LogerResponse, error)
 	GetSoldier(context.Context, *GetSoldierReq) (*Soldiers, error)
 	GetAllSoldiers(context.Context, *GetAllSoldierReq) (*GetSoldierRequestResponse, error)
 	UpdateSoldier(context.Context, *UpdateSoldierReq) (*Soldiers, error)
@@ -140,10 +140,10 @@ type UnimplementedSoldiersServiceServer struct {
 func (UnimplementedSoldiersServiceServer) CreateSoldiers(context.Context, *CreateSoldiersReq) (*Status, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSoldiers not implemented")
 }
-func (UnimplementedSoldiersServiceServer) RegisterUser(context.Context, *RegisterAndLoginReq) (*Soldiers, error) {
+func (UnimplementedSoldiersServiceServer) RegisterUser(context.Context, *RegisterReq) (*Soldiers, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterUser not implemented")
 }
-func (UnimplementedSoldiersServiceServer) Login(context.Context, *RegisterAndLoginReq) (*LogerResponse, error) {
+func (UnimplementedSoldiersServiceServer) Login(context.Context, *LoginReq) (*LogerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
 func (UnimplementedSoldiersServiceServer) GetSoldier(context.Context, *GetSoldierReq) (*Soldiers, error) {
@@ -190,7 +190,7 @@ func _SoldiersService_CreateSoldiers_Handler(srv interface{}, ctx context.Contex
 }
 
 func _SoldiersService_RegisterUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterAndLoginReq)
+	in := new(RegisterReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -202,13 +202,13 @@ func _SoldiersService_RegisterUser_Handler(srv interface{}, ctx context.Context,
 		FullMethod: SoldiersService_RegisterUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SoldiersServiceServer).RegisterUser(ctx, req.(*RegisterAndLoginReq))
+		return srv.(SoldiersServiceServer).RegisterUser(ctx, req.(*RegisterReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _SoldiersService_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterAndLoginReq)
+	in := new(LoginReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -220,7 +220,7 @@ func _SoldiersService_Login_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: SoldiersService_Login_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SoldiersServiceServer).Login(ctx, req.(*RegisterAndLoginReq))
+		return srv.(SoldiersServiceServer).Login(ctx, req.(*LoginReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }

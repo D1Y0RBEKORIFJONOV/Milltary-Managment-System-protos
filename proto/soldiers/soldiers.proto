@@ -5,12 +5,17 @@ option  go_package  = "diyorbek.soldiers.v1;soldiers1";
 
 service SoldiersService {
    rpc CreateSoldiers(CreateSoldiersReq) returns  (Status);
-   rpc RegisterUser(RegisterAndLoginReq) returns (Soldiers);
-   rpc Login(RegisterAndLoginReq) returns (LogerResponse);
+   rpc RegisterUser(RegisterReq) returns (Soldiers);
+   rpc Login(LoginReq) returns (LogerResponse);
    rpc GetSoldier(GetSoldierReq) returns (Soldiers);
    rpc GetAllSoldiers(GetAllSoldierReq) returns (GetSoldierRequestResponse);
    rpc UpdateSoldier(UpdateSoldierReq) returns (Soldiers);
    rpc DeleteSoldier(DeleteSoldierReq) returns (Status);
+}
+
+message RegisterReq {
+    string email = 1;
+    string secred_code = 2;
 }
 
 
@@ -48,9 +53,9 @@ message LogerResponse {
 message Status {
     string message = 1;
 }
-message RegisterAndLoginReq {
+message LoginReq {
     string email = 1;
-    string secred_code = 2;
+    string password = 2;
 }
 
 message CreateSoldiersReq {
