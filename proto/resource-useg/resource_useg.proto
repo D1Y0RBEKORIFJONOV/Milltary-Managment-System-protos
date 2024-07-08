@@ -1,13 +1,11 @@
 syntax = "proto3";
 
-package storehouse.v1;
-
 option go_package = "abdulloh.resource_useg.v1;resource_useg1";
 
-service StorehouseService {
-    rpc CreateStorehouse(CreateStorehouseReq) returns (ResourceUseg);
-    rpc GetAllStorehouse(GetAllStorehouseReq) returns (GetAllStorehouseRes);
-    rpc DeleteStorehouse(DeleteStorehouseReq) returns (DeleteStorehouseRes);
+service ResourceUsegService {
+    rpc CreateResourceUseg(CreateResourceUsegReq) returns (ResourceUseg);
+    rpc GetAllResourceUseg(GetAllResourceUsegReq) returns (GetAllResourceUsegRes);
+    rpc DeleteResourceUseg(DeleteResourceUsegReq) returns (DeleteResourceUsegRes);
 }
 
 message ResourceUseg {
@@ -20,14 +18,14 @@ message ResourceUseg {
     string updated_at = 7;
 }
 
-message CreateStorehouseReq {
+message CreateResourceUsegReq {
     string soldier_id = 1;
     string storage_id = 2;
     int64 amount = 3;
     float total_price = 4;
 }
 
-message GetAllStorehouseReq {
+message GetAllResourceUsegReq {
     int64 page = 1;
     int64 limit = 2;
     string field = 3;
@@ -37,15 +35,15 @@ message GetAllStorehouseReq {
     string ended_at = 7;
 }
 
-message GetAllStorehouseRes {
-    repeated ResourceUseg storehouses = 1;
+message GetAllResourceUsegRes {
+    repeated ResourceUseg ResourceUsegs = 1;
     int64 count = 2;
 }
 
-message DeleteStorehouseReq {
+message DeleteResourceUsegReq {
     string id = 1;
 }
 
-message DeleteStorehouseRes {
+message DeleteResourceUsegRes {
     string message = 1;
 }
