@@ -30,6 +30,9 @@ message GetAllSoldierReq {
     string value = 2;
     int64 page = 3;
     int64 limit = 4;
+    string sord_by = 5;
+    string start_at = 6;
+    string end_at = 7;
 }
 
 message UpdateSoldierReq {
