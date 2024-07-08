@@ -19,166 +19,166 @@ import (
 const _ = grpc.SupportPackageIsVersion8
 
 const (
-	StorehouseService_CreateStorehouse_FullMethodName = "/storehouse.v1.StorehouseService/CreateStorehouse"
-	StorehouseService_GetAllStorehouse_FullMethodName = "/storehouse.v1.StorehouseService/GetAllStorehouse"
-	StorehouseService_DeleteStorehouse_FullMethodName = "/storehouse.v1.StorehouseService/DeleteStorehouse"
+	ResourceUsegService_CreateResourceUseg_FullMethodName = "/ResourceUsegService/CreateResourceUseg"
+	ResourceUsegService_GetAllResourceUseg_FullMethodName = "/ResourceUsegService/GetAllResourceUseg"
+	ResourceUsegService_DeleteResourceUseg_FullMethodName = "/ResourceUsegService/DeleteResourceUseg"
 )
 
-// StorehouseServiceClient is the client API for StorehouseService service.
+// ResourceUsegServiceClient is the client API for ResourceUsegService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type StorehouseServiceClient interface {
-	CreateStorehouse(ctx context.Context, in *CreateStorehouseReq, opts ...grpc.CallOption) (*ResourceUseg, error)
-	GetAllStorehouse(ctx context.Context, in *GetAllStorehouseReq, opts ...grpc.CallOption) (*GetAllStorehouseRes, error)
-	DeleteStorehouse(ctx context.Context, in *DeleteStorehouseReq, opts ...grpc.CallOption) (*DeleteStorehouseRes, error)
+type ResourceUsegServiceClient interface {
+	CreateResourceUseg(ctx context.Context, in *CreateResourceUsegReq, opts ...grpc.CallOption) (*ResourceUseg, error)
+	GetAllResourceUseg(ctx context.Context, in *GetAllResourceUsegReq, opts ...grpc.CallOption) (*GetAllResourceUsegRes, error)
+	DeleteResourceUseg(ctx context.Context, in *DeleteResourceUsegReq, opts ...grpc.CallOption) (*DeleteResourceUsegRes, error)
 }
 
-type storehouseServiceClient struct {
+type resourceUsegServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewStorehouseServiceClient(cc grpc.ClientConnInterface) StorehouseServiceClient {
-	return &storehouseServiceClient{cc}
+func NewResourceUsegServiceClient(cc grpc.ClientConnInterface) ResourceUsegServiceClient {
+	return &resourceUsegServiceClient{cc}
 }
 
-func (c *storehouseServiceClient) CreateStorehouse(ctx context.Context, in *CreateStorehouseReq, opts ...grpc.CallOption) (*ResourceUseg, error) {
+func (c *resourceUsegServiceClient) CreateResourceUseg(ctx context.Context, in *CreateResourceUsegReq, opts ...grpc.CallOption) (*ResourceUseg, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResourceUseg)
-	err := c.cc.Invoke(ctx, StorehouseService_CreateStorehouse_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ResourceUsegService_CreateResourceUseg_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storehouseServiceClient) GetAllStorehouse(ctx context.Context, in *GetAllStorehouseReq, opts ...grpc.CallOption) (*GetAllStorehouseRes, error) {
+func (c *resourceUsegServiceClient) GetAllResourceUseg(ctx context.Context, in *GetAllResourceUsegReq, opts ...grpc.CallOption) (*GetAllResourceUsegRes, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAllStorehouseRes)
-	err := c.cc.Invoke(ctx, StorehouseService_GetAllStorehouse_FullMethodName, in, out, cOpts...)
+	out := new(GetAllResourceUsegRes)
+	err := c.cc.Invoke(ctx, ResourceUsegService_GetAllResourceUseg_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *storehouseServiceClient) DeleteStorehouse(ctx context.Context, in *DeleteStorehouseReq, opts ...grpc.CallOption) (*DeleteStorehouseRes, error) {
+func (c *resourceUsegServiceClient) DeleteResourceUseg(ctx context.Context, in *DeleteResourceUsegReq, opts ...grpc.CallOption) (*DeleteResourceUsegRes, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteStorehouseRes)
-	err := c.cc.Invoke(ctx, StorehouseService_DeleteStorehouse_FullMethodName, in, out, cOpts...)
+	out := new(DeleteResourceUsegRes)
+	err := c.cc.Invoke(ctx, ResourceUsegService_DeleteResourceUseg_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// StorehouseServiceServer is the server API for StorehouseService service.
-// All implementations must embed UnimplementedStorehouseServiceServer
+// ResourceUsegServiceServer is the server API for ResourceUsegService service.
+// All implementations must embed UnimplementedResourceUsegServiceServer
 // for forward compatibility
-type StorehouseServiceServer interface {
-	CreateStorehouse(context.Context, *CreateStorehouseReq) (*ResourceUseg, error)
-	GetAllStorehouse(context.Context, *GetAllStorehouseReq) (*GetAllStorehouseRes, error)
-	DeleteStorehouse(context.Context, *DeleteStorehouseReq) (*DeleteStorehouseRes, error)
-	mustEmbedUnimplementedStorehouseServiceServer()
+type ResourceUsegServiceServer interface {
+	CreateResourceUseg(context.Context, *CreateResourceUsegReq) (*ResourceUseg, error)
+	GetAllResourceUseg(context.Context, *GetAllResourceUsegReq) (*GetAllResourceUsegRes, error)
+	DeleteResourceUseg(context.Context, *DeleteResourceUsegReq) (*DeleteResourceUsegRes, error)
+	mustEmbedUnimplementedResourceUsegServiceServer()
 }
 
-// UnimplementedStorehouseServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedStorehouseServiceServer struct {
+// UnimplementedResourceUsegServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedResourceUsegServiceServer struct {
 }
 
-func (UnimplementedStorehouseServiceServer) CreateStorehouse(context.Context, *CreateStorehouseReq) (*ResourceUseg, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateStorehouse not implemented")
+func (UnimplementedResourceUsegServiceServer) CreateResourceUseg(context.Context, *CreateResourceUsegReq) (*ResourceUseg, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateResourceUseg not implemented")
 }
-func (UnimplementedStorehouseServiceServer) GetAllStorehouse(context.Context, *GetAllStorehouseReq) (*GetAllStorehouseRes, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAllStorehouse not implemented")
+func (UnimplementedResourceUsegServiceServer) GetAllResourceUseg(context.Context, *GetAllResourceUsegReq) (*GetAllResourceUsegRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllResourceUseg not implemented")
 }
-func (UnimplementedStorehouseServiceServer) DeleteStorehouse(context.Context, *DeleteStorehouseReq) (*DeleteStorehouseRes, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteStorehouse not implemented")
+func (UnimplementedResourceUsegServiceServer) DeleteResourceUseg(context.Context, *DeleteResourceUsegReq) (*DeleteResourceUsegRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteResourceUseg not implemented")
 }
-func (UnimplementedStorehouseServiceServer) mustEmbedUnimplementedStorehouseServiceServer() {}
+func (UnimplementedResourceUsegServiceServer) mustEmbedUnimplementedResourceUsegServiceServer() {}
 
-// UnsafeStorehouseServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to StorehouseServiceServer will
+// UnsafeResourceUsegServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ResourceUsegServiceServer will
 // result in compilation errors.
-type UnsafeStorehouseServiceServer interface {
-	mustEmbedUnimplementedStorehouseServiceServer()
+type UnsafeResourceUsegServiceServer interface {
+	mustEmbedUnimplementedResourceUsegServiceServer()
 }
 
-func RegisterStorehouseServiceServer(s grpc.ServiceRegistrar, srv StorehouseServiceServer) {
-	s.RegisterService(&StorehouseService_ServiceDesc, srv)
+func RegisterResourceUsegServiceServer(s grpc.ServiceRegistrar, srv ResourceUsegServiceServer) {
+	s.RegisterService(&ResourceUsegService_ServiceDesc, srv)
 }
 
-func _StorehouseService_CreateStorehouse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateStorehouseReq)
+func _ResourceUsegService_CreateResourceUseg_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateResourceUsegReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StorehouseServiceServer).CreateStorehouse(ctx, in)
+		return srv.(ResourceUsegServiceServer).CreateResourceUseg(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StorehouseService_CreateStorehouse_FullMethodName,
+		FullMethod: ResourceUsegService_CreateResourceUseg_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorehouseServiceServer).CreateStorehouse(ctx, req.(*CreateStorehouseReq))
+		return srv.(ResourceUsegServiceServer).CreateResourceUseg(ctx, req.(*CreateResourceUsegReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StorehouseService_GetAllStorehouse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAllStorehouseReq)
+func _ResourceUsegService_GetAllResourceUseg_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllResourceUsegReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StorehouseServiceServer).GetAllStorehouse(ctx, in)
+		return srv.(ResourceUsegServiceServer).GetAllResourceUseg(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StorehouseService_GetAllStorehouse_FullMethodName,
+		FullMethod: ResourceUsegService_GetAllResourceUseg_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorehouseServiceServer).GetAllStorehouse(ctx, req.(*GetAllStorehouseReq))
+		return srv.(ResourceUsegServiceServer).GetAllResourceUseg(ctx, req.(*GetAllResourceUsegReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StorehouseService_DeleteStorehouse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteStorehouseReq)
+func _ResourceUsegService_DeleteResourceUseg_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteResourceUsegReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StorehouseServiceServer).DeleteStorehouse(ctx, in)
+		return srv.(ResourceUsegServiceServer).DeleteResourceUseg(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StorehouseService_DeleteStorehouse_FullMethodName,
+		FullMethod: ResourceUsegService_DeleteResourceUseg_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StorehouseServiceServer).DeleteStorehouse(ctx, req.(*DeleteStorehouseReq))
+		return srv.(ResourceUsegServiceServer).DeleteResourceUseg(ctx, req.(*DeleteResourceUsegReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// StorehouseService_ServiceDesc is the grpc.ServiceDesc for StorehouseService service.
+// ResourceUsegService_ServiceDesc is the grpc.ServiceDesc for ResourceUsegService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var StorehouseService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "storehouse.v1.StorehouseService",
-	HandlerType: (*StorehouseServiceServer)(nil),
+var ResourceUsegService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "ResourceUsegService",
+	HandlerType: (*ResourceUsegServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateStorehouse",
-			Handler:    _StorehouseService_CreateStorehouse_Handler,
+			MethodName: "CreateResourceUseg",
+			Handler:    _ResourceUsegService_CreateResourceUseg_Handler,
 		},
 		{
-			MethodName: "GetAllStorehouse",
-			Handler:    _StorehouseService_GetAllStorehouse_Handler,
+			MethodName: "GetAllResourceUseg",
+			Handler:    _ResourceUsegService_GetAllResourceUseg_Handler,
 		},
 		{
-			MethodName: "DeleteStorehouse",
-			Handler:    _StorehouseService_DeleteStorehouse_Handler,
+			MethodName: "DeleteResourceUseg",
+			Handler:    _ResourceUsegService_DeleteResourceUseg_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
