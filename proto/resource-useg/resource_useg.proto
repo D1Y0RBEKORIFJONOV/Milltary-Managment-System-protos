@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package storehouse.v1;
+
+option go_package = "abdulloh.resource_useg.v1;resource_useg1";
+
+service StorehouseService {
+    rpc CreateStorehouse(CreateStorehouseReq) returns (Storehouse);
+    rpc GetAllStorehouse(GetAllStorehouseReq) returns (GetAllStorehouseRes);
+    rpc DeleteStorehouse(DeleteStorehouseReq) returns (DeleteStorehouseRes);
+}
+
+message Storehouse {
+    string id = 1;
+    string soldier_id = 2;
+    string storage_id = 3;
+    int64 amount = 4;
+    float total_price = 5;
+    string created_at = 6;
+    string updated_at = 7;
+}
+
+message CreateStorehouseReq {
+    string soldier_id = 1;
+    string storage_id = 2;
+    int64 amount = 3;
+    float total_price = 4;
+}
+
+message GetAllStorehouseReq {
+    int64 page = 1;
+    int64 limit = 2;
+    string field = 3;
+    string value = 4;
+    string sort_by = 5;
+    string started_at = 6;
+    string ended_at = 7;
+}
+
+message GetAllStorehouseRes {
+    repeated Storehouse storehouses = 1;
+    int64 count = 2;
+}
+
+message DeleteStorehouseReq {
+    string id = 1;
+}
+
+message DeleteStorehouseRes {
+    string message = 1;
+}
