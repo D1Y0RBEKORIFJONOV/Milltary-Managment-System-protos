@@ -70,6 +70,9 @@ message GetAllServiceRequest {
     string value = 2;
     uint64 page = 3;
     uint64 limit = 4;
+    string  sord_by = 6;
+    string start_at = 7;
+    string end_at = 8;
 }
 
 message GetAllResourceTypesResponse {
