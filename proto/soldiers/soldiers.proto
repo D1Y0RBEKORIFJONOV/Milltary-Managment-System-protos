@@ -79,5 +79,6 @@ message Soldiers  {
     string created_at = 9;
     string updated_at = 10;
     string role = 11;
+    string term = 12;
 }
 

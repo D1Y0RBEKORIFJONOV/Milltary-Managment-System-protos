@@ -43,9 +43,10 @@ message SoldiersGroup  {
     string role = 11;
 }
 
+
 message AddGroupSoldersResponse {
     string group_id = 1;
-    SoldiersGroup soldiers_group = 2;
+     SoldiersGroup soldiers_group = 2;
 }
 
 message UpdateGroupRequest {
