@@ -13,7 +13,6 @@ service GroupService {
 
 
 message CreateGroupRequest  {
-    string soldiers_id  = 1;
     string group_name  = 2;
     uint64 size_limit = 3;
 
@@ -21,7 +20,6 @@ message CreateGroupRequest  {
 
 message Group  {
     string group_id  = 1;
-    string soldiers_id = 2;
     string grop_name = 3;
     uint64 size = 4;
     uint64 size_limit =  5;
