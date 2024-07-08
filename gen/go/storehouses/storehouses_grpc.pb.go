@@ -34,7 +34,7 @@ type StorehouseServiceClient interface {
 	GetStorehouse(ctx context.Context, in *GetStorehouseReq, opts ...grpc.CallOption) (*Storehouse, error)
 	GetAllStorehouse(ctx context.Context, in *GetAllStorehouseReq, opts ...grpc.CallOption) (*GetAllStorehouseRes, error)
 	UpdateStorehouse(ctx context.Context, in *UpdateStorehouseReq, opts ...grpc.CallOption) (*Storehouse, error)
-	DeleteStorehouse(ctx context.Context, in *DeleteStorehouseReq, opts ...grpc.CallOption) (*Status, error)
+	DeleteStorehouse(ctx context.Context, in *DeleteStorehouseReq, opts ...grpc.CallOption) (*DeleteStorehouseRes, error)
 }
 
 type storehouseServiceClient struct {
@@ -85,9 +85,9 @@ func (c *storehouseServiceClient) UpdateStorehouse(ctx context.Context, in *Upda
 	return out, nil
 }
 
-func (c *storehouseServiceClient) DeleteStorehouse(ctx context.Context, in *DeleteStorehouseReq, opts ...grpc.CallOption) (*Status, error) {
+func (c *storehouseServiceClient) DeleteStorehouse(ctx context.Context, in *DeleteStorehouseReq, opts ...grpc.CallOption) (*DeleteStorehouseRes, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Status)
+	out := new(DeleteStorehouseRes)
 	err := c.cc.Invoke(ctx, StorehouseService_DeleteStorehouse_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -103,7 +103,7 @@ type StorehouseServiceServer interface {
 	GetStorehouse(context.Context, *GetStorehouseReq) (*Storehouse, error)
 	GetAllStorehouse(context.Context, *GetAllStorehouseReq) (*GetAllStorehouseRes, error)
 	UpdateStorehouse(context.Context, *UpdateStorehouseReq) (*Storehouse, error)
-	DeleteStorehouse(context.Context, *DeleteStorehouseReq) (*Status, error)
+	DeleteStorehouse(context.Context, *DeleteStorehouseReq) (*DeleteStorehouseRes, error)
 	mustEmbedUnimplementedStorehouseServiceServer()
 }
 
@@ -123,7 +123,7 @@ func (UnimplementedStorehouseServiceServer) GetAllStorehouse(context.Context, *G
 func (UnimplementedStorehouseServiceServer) UpdateStorehouse(context.Context, *UpdateStorehouseReq) (*Storehouse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateStorehouse not implemented")
 }
-func (UnimplementedStorehouseServiceServer) DeleteStorehouse(context.Context, *DeleteStorehouseReq) (*Status, error) {
+func (UnimplementedStorehouseServiceServer) DeleteStorehouse(context.Context, *DeleteStorehouseReq) (*DeleteStorehouseRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteStorehouse not implemented")
 }
 func (UnimplementedStorehouseServiceServer) mustEmbedUnimplementedStorehouseServiceServer() {}

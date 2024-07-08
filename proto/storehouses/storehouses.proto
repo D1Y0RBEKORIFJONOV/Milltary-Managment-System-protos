@@ -9,7 +9,7 @@ service StorehouseService {
     rpc GetStorehouse(GetStorehouseReq) returns (Storehouse);
     rpc GetAllStorehouse(GetAllStorehouseReq) returns (GetAllStorehouseRes);
     rpc UpdateStorehouse(UpdateStorehouseReq) returns (Storehouse);
-    rpc DeleteStorehouse(DeleteStorehouseReq) returns (Status);
+    rpc DeleteStorehouse(DeleteStorehouseReq) returns (DeleteStorehouseRes);
 }
 
 message Storehouse {
@@ -59,6 +59,6 @@ message DeleteStorehouseReq {
     string id = 1;
 }
 
-message Status {
+message DeleteStorehouseRes {
     string message = 1; 
 }
