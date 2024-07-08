@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+option  go_package  = "diyorbek.group.v1;group1";
+
+service GroupService {
+    rpc CreateGroup(CreateGroupRequest) returns (Group);
+    rpc AddGroupSolders(AddGroupSoldersRequest) returns (AddGroupSoldersResponse);
+    rpc UpdateGroup(UpdateGroupRequest) returns (Group);
+    rpc DeleteGroup(DeleteGroupRequest) returns (DeleteGroupResponse);
+    rpc GetAllResourceTypes(GetAllServiceRequest) returns (GetAllResourceTypesResponse);
+    
+}
+
+
+message CreateGroupRequest  {
+    string soldiers_id  = 1;
+    string group_name  = 2;
+    uint64 size_limit = 3;
+
+}
+
+message Group  {
+    string group_id  = 1;
+    string soldiers_id = 2;
+    string grop_name = 3;
+    uint64 size = 4;
+    uint64 size_limit =  5;
+    string created_at = 6;
+    string updated_at = 7;
+}
+
+message AddGroupSoldersRequest {
+    string group_id = 1;
+    string soldiers_id = 2;
+}
+
+message SoldiersGroup  {
+    string id = 1;
+    string fnName = 2;
+    string lnName = 3;
+    string email = 4;
+    string birht_day = 6;
+    string role = 11;
+}
+
+message AddGroupSoldersResponse {
+    string group_id = 1;
+    repeated SoldiersGroup soldiers_group = 2;
+}
+
+message UpdateGroupRequest {
+    string group_id = 1;
+    string group_name = 2;
+    uint64 size_limit = 3;
+}
+
+message DeleteGroupRequest {
+    string group_id = 1;
+    string field = 2;
+    string value = 3;
+}
+
+message DeleteGroupResponse {
+    string  message = 1;
+}
+
+message GetAllServiceRequest {
+    string field = 1;
+    string value = 2;
+    uint64 page = 3;
+    uint64 limit = 4;
+}
+
+message GetAllResourceTypesResponse {
+    repeated Group grops = 1;
+    uint64 count = 2;
+}
+
+
