@@ -5,12 +5,12 @@ package storehouse.v1;
 option go_package = "abdulloh.resource_useg.v1;resource_useg1";
 
 service StorehouseService {
-    rpc CreateStorehouse(CreateStorehouseReq) returns (Storehouse);
+    rpc CreateStorehouse(CreateStorehouseReq) returns (ResourceUseg);
     rpc GetAllStorehouse(GetAllStorehouseReq) returns (GetAllStorehouseRes);
     rpc DeleteStorehouse(DeleteStorehouseReq) returns (DeleteStorehouseRes);
 }
 
-message Storehouse {
+message ResourceUseg {
     string id = 1;
     string soldier_id = 2;
     string storage_id = 3;
@@ -38,7 +38,7 @@ message GetAllStorehouseReq {
 }
 
 message GetAllStorehouseRes {
-    repeated Storehouse storehouses = 1;
+    repeated ResourceUseg storehouses = 1;
     int64 count = 2;
 }
 
