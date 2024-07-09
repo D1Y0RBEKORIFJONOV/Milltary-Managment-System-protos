@@ -6,6 +6,20 @@ service ResourceUsegService {
     rpc CreateResourceUseg(CreateResourceUsegReq) returns (ResourceUseg);
     rpc GetAllResourceUseg(GetAllResourceUsegReq) returns (GetAllResourceUsegRes);
     rpc DeleteResourceUseg(DeleteResourceUsegReq) returns (DeleteResourceUsegRes);
+    rpc TopResourceUseg(TopResourceUsegReq) returns (TopResourceUsegRes);
+}
+
+message TopResourceUsegReq{
+    string SortBy = 1;
+	string TopBy = 2;
+	int64  Limit = 3; 
+	string StartedAt = 4;  
+	string EndedAt = 5;
+}
+
+message TopResourceUsegRes{
+    string SortBy = 1;
+    int64 count = 2;
 }
 
 message ResourceUseg {
