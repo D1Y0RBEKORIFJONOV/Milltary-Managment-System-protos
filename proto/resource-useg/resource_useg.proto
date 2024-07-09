@@ -6,7 +6,14 @@ service ResourceUsegService {
     rpc CreateResourceUseg(CreateResourceUsegReq) returns (ResourceUseg);
     rpc GetAllResourceUseg(GetAllResourceUsegReq) returns (GetAllResourceUsegRes);
     rpc DeleteResourceUseg(DeleteResourceUsegReq) returns (DeleteResourceUsegRes);
+    rpc GetResourceBYGroupId(GetResourceBYGroupIdReq) returns (ResourceByGroupIdRes); 
 }
+
+message GetResourceBYGroupIdReq {
+    string group_id = 1;
+}
+
+
 
 message ResourceUseg {
     string id = 1;
@@ -16,6 +23,10 @@ message ResourceUseg {
     float total_price = 5;
     string created_at = 6;
     string updated_at = 7;
+}
+
+message ResourceByGroupIdRes {
+    repeated ResourceUseg resource_usegs = 1;
 }
 
 message CreateResourceUsegReq {
